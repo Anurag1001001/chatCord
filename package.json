@@ -1,0 +1,24 @@
+{
+  "name": "realtime-chat-with-users-rooms---socket.io-node-express",
+  "version": "1.0.0",
+  "description": " RealTime chat application",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Anurag1001001/Realtime-Chat-With-Users-Rooms---Socket.io-Node-Express.git"
+  },
+  "author": "Anurag Tripathi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Anurag1001001/Realtime-Chat-With-Users-Rooms---Socket.io-Node-Express/issues"
+  },
+  "homepage": "https://github.com/Anurag1001001/Realtime-Chat-With-Users-Rooms---Socket.io-Node-Express#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "moment": "^2.29.1",
+    "socket.io": "^3.0.4"
+  }
+}
