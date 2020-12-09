@@ -16,15 +16,18 @@ io.on('connection', socket => {
     // Welcome current User
     socket.emit('message', "Welcome to the Chatcord!");
 
-    console.log('hi');
     // Broadcast when a user connects
     //  there is a difference in socket.emit(), socket.broadcast.emit(), io.emit() ---> to broadcast to everybody
     socket.broadcast.emit('message', 'A user has joined the chat');
-    console.log('hello');
     // Runs when client disconnects
     socket.on('disconnect', () =>{
         io.emit('message', 'A User has left the chat');
     });
+
+    // Listen for chatMessage
+    socket.on('chatMessage', (msg) => {
+        io.emit('message', msg);
+    })
 });
 
 
