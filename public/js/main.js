@@ -22,6 +22,10 @@ chatForm.addEventListener('submit', e => {
 
     // Emit message to server
     socket.emit('chatMessage', msg);
+
+    // clear input( AFter emitting the message i want to clear the text area and also want to be focus on the textarea);
+    e.target.elements.msg.value = '';
+    e.target.elements.msg.focus();
 });
 
 // Output message to DOM
@@ -29,9 +33,9 @@ chatForm.addEventListener('submit', e => {
 function outputMessage(message){
     const div = document.createElement('div');
     div.classList.add('message');
-    div.innerHTML = `<p class="meta">Brad <span>9:12pm</span></p>
+    div.innerHTML = `<p class="meta">${message.username} <span>${message.time}</span></p>
     <p class="text">
-        ${message}
+        ${message.text}
     </p>`;
     document.querySelector('.chat-messages').appendChild(div);
 }
