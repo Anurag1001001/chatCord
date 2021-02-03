@@ -15,13 +15,19 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 const botName = 'chatCord Bot';
 // Run when client connects
-io.on('connection', socket => {
+// 'socket' parameter to the arrow function 
 
-    //  this username and room is coming from URL
+// io.on It basically keeps on listening on every new connection
+
+io.on('connection', socket => {
+    // console.log('new user connected');
+
+    //  this username and room is coming from URL from client side we're fetching these details and sending back to the server while firing the 'joinroom' signal 
     socket.on('joinRoom', ({username, room}) =>{
         const user = userJoin(socket.id, username, room);
 
-        // inbuilt join() function used here
+        //  like if we've given option to the user to chat on different room so this is the way to join a user to a specific room .
+        // Join() is the method to join user to a different room.
         socket.join(user.room);
 
         // Welcome current User
@@ -35,7 +41,6 @@ io.on('connection', socket => {
         .emit('message', formatMessage(botName,`${user.username} has joined the chat`));
 
         // Send users and room info
-
         io.to(user.room).emit('roomUsers',{
             room: user.room,
             users: getRoomUsers(user.room)
@@ -50,6 +55,7 @@ io.on('connection', socket => {
         .to(user.room)
         .emit('message',formatMessage(user.username, msg));
     });
+
     // Runs when client disconnects
     socket.on('disconnect', () =>{
         const user = userLeave(socket.id);

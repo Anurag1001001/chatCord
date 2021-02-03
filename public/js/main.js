@@ -6,6 +6,7 @@ const userList = document.getElementById('users')
 // Get username and room from URL
 //  we need to have these two values so that i can create a specific room for a  chat
 const {username, room} = Qs.parse(location.search,{
+    // Qs.parse() is used to get stuff from URL
     // to igonore &,-,/ from URL set below statement to true
     ignoreQueryPrefix: true
 });
